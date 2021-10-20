@@ -5,6 +5,7 @@
   "version": "2.0.0",
   "private": false,
   "scripts": {
+    "preinstall": "sh ./modules/checkoutDependencies.sh",
     "eslint": "eslint ./src",
     "eslint-fix": "eslint --fix ./src",
     "start": "react-scripts start",
