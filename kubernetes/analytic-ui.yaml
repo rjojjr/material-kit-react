@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: buildbench-analytic-ui-v2
+  namespace: dev
+  labels:
+    app: buildbench-analytic-ui-v2
+spec:
+  selector:
+    matchLabels:
+      app: buildbench-analytic-ui-v2
+  template:
+    metadata:
+      labels:
+        app: buildbench-analytic-ui-v2
+    spec:
+      containers:
+        - name: buildbench-analytic-ui-v2
+          image: us.gcr.io/container-registry-276316/buildbench/analytic-ui-v2:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          tty: true
+          stdin: true
+          env:
+            - name: CI
+              value: "true"
+            - name: ROOT_API_DOMAIN
+              value: "http://192.168.1.242:31001"
+            - name: ADMIN_API_TOKEN
+              value: "DEiKoNamafwSl1BdDGpBqxTR3Eckjw5SdAP0sv2yjLAOraufbLqKaCDQrVIEHegDT8uSvzCeK3fy4QpA+6j9QA"
+      imagePullSecrets:
+        - name: gcr-json-key
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: buildbench-analytic-ui-v2
+  namespace: dev
+  labels:
+    app: buildbench-analytic-ui-v2
+spec:
+  type: NodePort
+  selector:
+    app: buildbench-analytic-ui-v2
+  ports:
+    - port: 80
+      nodePort: 31010
