@@ -2,7 +2,7 @@
   "name": "react-material-dashboard",
   "author": "DeviasIO",
   "licence": "MIT",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": false,
   "scripts": {
     "eslint": "eslint ./src",
@@ -10,7 +10,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",    
+    "eject": "react-scripts eject",
     "lint": "eslint ./",
     "lint-fix": "eslint ./ --fix"
   },
